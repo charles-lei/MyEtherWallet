@@ -9,6 +9,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import VueLodash from 'vue-lodash'
+import VueI18n from 'vue-i18n'
 
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
@@ -23,6 +24,8 @@ import ByJsonPageFooter from '@/components/Body/CreateWallet/ByJsonOrMnemonic/Pa
 import PriceBar from '@/components/Body/SmallComponents/PriceBar/PriceBar'
 import AccessMyWalletOptions from '@/components/Body/AccessMyWallet/AccessMyWalletOptions/AccessMyWalletOptions'
 import TransactionsSideMenu from '@/components/Body/Transactions/TransactionsSideMenu/TransactionsSideMenu'
+
+import languages from './translations'
 
 Vue.component('vue-header', Header)
 Vue.component('vue-footer', Footer)
@@ -47,9 +50,16 @@ Vue.use(BootstrapVue)
 const options = { name: 'lodash' }
 Vue.use(VueLodash, options)
 
+// Define vue-i18n
+Vue.use(VueI18n)
+const i18n = new VueI18n({
+  locale: 'en',
+  languages: {languages}
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  i18n,
   router,
   store,
   components: { App },
